@@ -4,6 +4,34 @@ import SectionHeader from './SectionHeader'
 
 const projects = [
   {
+    emoji: '📈',
+    name: 'Stock Exchange Platform',
+    desc: 'Real-time stock exchange and trading platform with live market data, order books, and trade execution.',
+    bullets: [
+      <>Live <strong>markets view</strong> with real-time price feeds and order book depth.</>,
+      <>Full trading engine supporting <strong>buy/sell order placement</strong> and execution.</>,
+      <>Deployed on <strong>GCP</strong> with a public-facing production environment.</>,
+    ],
+    tech: ['React', 'Node.js', 'WebSockets', 'GCP'],
+    github: null,
+    live: 'http://34.51.42.190/markets',
+    color: '#10b981',
+  },
+  {
+    emoji: '♟️',
+    name: 'Real-Time Chess App',
+    desc: 'Multiplayer chess application with real-time gameplay, Google OAuth login, draw/resign functionality, and live game state sync.',
+    bullets: [
+      <><strong>WebSocket-based</strong> real-time move sync between two players with no lag.</>,
+      <><strong>Google OAuth</strong> authentication for secure, seamless sign-in.</>,
+      <>Draw and resign controls with <strong>game state management</strong> handled server-side.</>,
+    ],
+    tech: ['React', 'Node.js', 'WebSockets', 'Google OAuth', 'Vercel'],
+    github: 'https://github.com/deekshithreddy34',
+    live: 'https://chess-app-frontend-one.vercel.app/',
+    color: '#f59e0b',
+  },
+  {
     emoji: '💳',
     name: 'Payment Gateway Platform',
     desc: 'Full-stack peer-to-peer payment platform with wallet management, user authentication, and secure concurrent transaction handling.',
@@ -14,6 +42,7 @@ const projects = [
     ],
     tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Docker', 'Turborepo'],
     github: 'https://github.com/deekshithreddy34/payments-gateway',
+    live: null,
     color: '#6366f1',
   },
   {
@@ -27,6 +56,7 @@ const projects = [
     ],
     tech: ['Node.js', 'Express', 'Apache Kafka', 'PostgreSQL', 'Prisma ORM'],
     github: 'https://github.com/deekshithreddy34/Zapier',
+    live: null,
     color: '#8b5cf6',
   },
 ]
@@ -70,22 +100,46 @@ function ProjectCard({ p, i, inView }) {
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontSize: '1.5rem',
         }}>{p.emoji}</div>
-        <a
-          href={p.github}
-          target="_blank"
-          rel="noreferrer"
-          style={{
-            display: 'flex', alignItems: 'center', gap: 6,
-            color: '#475569', fontSize: '0.85rem', textDecoration: 'none',
-            transition: 'color 0.2s', fontWeight: 600,
-          }}
-          onMouseEnter={e => e.currentTarget.style.color = '#e2e8f0'}
-          onMouseLeave={e => e.currentTarget.style.color = '#475569'}
-        >
-          <i className="fab fa-github" style={{ fontSize: '1.1rem' }} />
-          GitHub
-          <i className="fas fa-arrow-up-right-from-square" style={{ fontSize: '0.7rem' }} />
-        </a>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+          {p.live && (
+            <a
+              href={p.live}
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 5,
+                color: p.color, fontSize: '0.82rem', textDecoration: 'none',
+                fontWeight: 700, background: `${p.color}15`,
+                border: `1px solid ${p.color}40`,
+                padding: '5px 11px', borderRadius: 7,
+                transition: 'all 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = `${p.color}28`; e.currentTarget.style.transform = 'translateY(-1px)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = `${p.color}15`; e.currentTarget.style.transform = '' }}
+            >
+              <i className="fas fa-globe" style={{ fontSize: '0.75rem' }} />
+              Live
+            </a>
+          )}
+          {p.github && (
+            <a
+              href={p.github}
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 5,
+                color: '#475569', fontSize: '0.82rem', textDecoration: 'none',
+                transition: 'color 0.2s', fontWeight: 600,
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = '#e2e8f0'}
+              onMouseLeave={e => e.currentTarget.style.color = '#475569'}
+            >
+              <i className="fab fa-github" style={{ fontSize: '1.05rem' }} />
+              GitHub
+              <i className="fas fa-arrow-up-right-from-square" style={{ fontSize: '0.65rem' }} />
+            </a>
+          )}
+        </div>
       </div>
 
       <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#e2e8f0', marginBottom: 10 }}>{p.name}</h3>
