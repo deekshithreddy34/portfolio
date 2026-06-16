@@ -4,167 +4,118 @@ import SectionHeader from './SectionHeader'
 
 const projects = [
   {
-    emoji: '📈',
     name: 'Stock Exchange Platform',
-    desc: 'Real-time stock exchange and trading platform with live market data, order books, and trade execution.',
+    desc: 'Real-time trading platform with live market data, order books, and trade execution.',
     bullets: [
-      <>Live <strong>markets view</strong> with real-time price feeds and order book depth.</>,
-      <>Full trading engine supporting <strong>buy/sell order placement</strong> and execution.</>,
-      <>Deployed on <strong>GCP</strong> with a public-facing production environment.</>,
+      'Live markets view with real-time price feeds and order book depth.',
+      'Full trading engine supporting buy/sell order placement and execution.',
+      'Deployed on GCP with a public production environment.',
     ],
     tech: ['React', 'Node.js', 'WebSockets', 'GCP'],
     github: null,
     live: 'http://34.51.42.190/markets',
-    color: '#10b981',
   },
   {
-    emoji: '♟️',
     name: 'Real-Time Chess App',
-    desc: 'Multiplayer chess application with real-time gameplay, Google OAuth login, draw/resign functionality, and live game state sync.',
+    desc: 'Multiplayer chess with real-time game sync, Google OAuth login, and draw/resign controls.',
     bullets: [
-      <><strong>WebSocket-based</strong> real-time move sync between two players with no lag.</>,
-      <><strong>Google OAuth</strong> authentication for secure, seamless sign-in.</>,
-      <>Draw and resign controls with <strong>game state management</strong> handled server-side.</>,
+      'WebSocket-based real-time move synchronisation between players.',
+      'Google OAuth authentication for secure, seamless sign-in.',
+      'Draw and resign controls with server-side game state management.',
     ],
-    tech: ['React', 'Node.js', 'WebSockets', 'Google OAuth', 'Vercel'],
+    tech: ['React', 'Node.js', 'WebSockets', 'Google OAuth'],
     github: 'https://github.com/deekshithreddy34',
     live: 'https://chess-app-frontend-one.vercel.app/',
-    color: '#f59e0b',
   },
   {
-    emoji: '💳',
     name: 'Payment Gateway Platform',
-    desc: 'Full-stack peer-to-peer payment platform with wallet management, user authentication, and secure concurrent transaction handling.',
+    desc: 'Full-stack peer-to-peer payment platform with wallet management and ACID-compliant transactions.',
     bullets: [
-      <><strong>ACID-compliant transactions</strong> using PostgreSQL transactions and row-level locking to prevent race conditions during concurrent payments.</>,
-      <>Designed using a <strong>monorepo architecture with Turborepo</strong>, improving modular development and code sharing across services.</>,
-      <>Containerized with <strong>Docker</strong> ensuring consistent development and deployment environments.</>,
+      'ACID-compliant transactions with PostgreSQL row-level locking to prevent race conditions.',
+      'Monorepo architecture with Turborepo for modular code sharing across services.',
+      'Containerized with Docker for consistent deployment environments.',
     ],
     tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Docker', 'Turborepo'],
     github: 'https://github.com/deekshithreddy34/payments-gateway',
     live: null,
-    color: '#6366f1',
   },
   {
-    emoji: '⚡',
     name: 'Zapier-Style Workflow Engine',
-    desc: 'Event-driven workflow automation platform where external services trigger actions through webhooks with guaranteed delivery.',
+    desc: 'Event-driven workflow automation where external services trigger actions via webhooks.',
     bullets: [
-      <>Designed <strong>event-driven architecture using Apache Kafka</strong>, where incoming webhook events are persisted as ZapRun records and processed asynchronously via workers.</>,
-      <>Implemented <strong>Transactional Outbox Pattern</strong> to guarantee atomic consistency between the database and Kafka queue, preventing data loss.</>,
-      <>Built with <strong>Node.js, Express, PostgreSQL and Prisma ORM</strong> for a robust, type-safe backend.</>,
+      'Apache Kafka event-driven architecture with async worker-based execution pipeline.',
+      'Transactional Outbox Pattern for atomic DB + Kafka consistency, preventing data loss.',
+      'Webhook ingestion with persisted ZapRun records for reliable workflow tracking.',
     ],
     tech: ['Node.js', 'Express', 'Apache Kafka', 'PostgreSQL', 'Prisma ORM'],
     github: 'https://github.com/deekshithreddy34/Zapier',
     live: null,
-    color: '#8b5cf6',
   },
 ]
 
-function ProjectCard({ p, i, inView }) {
+function Card({ p, i, inView }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: i * 0.15 }}
-      whileHover={{ y: -8 }}
+      transition={{ duration: 0.5, delay: i * 0.1 }}
+      whileHover={{ borderColor: 'rgba(255,255,255,0.14)' }}
       style={{
-        background: 'rgba(255,255,255,0.04)',
-        border: '1px solid rgba(255,255,255,0.08)',
-        borderRadius: 18, padding: 32,
-        backdropFilter: 'blur(10px)',
+        background: '#111', border: '1px solid rgba(255,255,255,0.07)',
+        borderRadius: 12, padding: '28px 28px',
         display: 'flex', flexDirection: 'column',
-        position: 'relative', overflow: 'hidden',
-        transition: 'border-color 0.3s, box-shadow 0.3s',
-        cursor: 'default',
-      }}
-      onMouseEnter={e => {
-        e.currentTarget.style.borderColor = 'rgba(99,102,241,0.4)'
-        e.currentTarget.style.boxShadow = '0 20px 60px rgba(99,102,241,0.12)'
-      }}
-      onMouseLeave={e => {
-        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'
-        e.currentTarget.style.boxShadow = ''
+        transition: 'border-color 0.2s',
       }}
     >
-      {/* top accent line */}
-      <div style={{
-        position: 'absolute', top: 0, left: 0, right: 0, height: 2,
-        background: `linear-gradient(90deg, ${p.color}, #06b6d4)`,
-      }} />
-
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 18 }}>
-        <div style={{
-          width: 50, height: 50, borderRadius: 13,
-          background: `${p.color}1a`, border: `1px solid ${p.color}33`,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: '1.5rem',
-        }}>{p.emoji}</div>
-        <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 }}>
+        <h3 style={{ fontSize: '0.975rem', fontWeight: 700, color: '#e8e8e8', lineHeight: 1.3 }}>{p.name}</h3>
+        <div style={{ display: 'flex', gap: 10, marginLeft: 12, flexShrink: 0 }}>
           {p.live && (
-            <a
-              href={p.live}
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                display: 'flex', alignItems: 'center', gap: 5,
-                color: p.color, fontSize: '0.82rem', textDecoration: 'none',
-                fontWeight: 700, background: `${p.color}15`,
-                border: `1px solid ${p.color}40`,
-                padding: '5px 11px', borderRadius: 7,
-                transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = `${p.color}28`; e.currentTarget.style.transform = 'translateY(-1px)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = `${p.color}15`; e.currentTarget.style.transform = '' }}
-            >
-              <i className="fas fa-globe" style={{ fontSize: '0.75rem' }} />
-              Live
-            </a>
+            <a href={p.live} target="_blank" rel="noreferrer" style={{
+              display: 'flex', alignItems: 'center', gap: 5,
+              background: 'rgba(79,126,247,0.1)', border: '1px solid rgba(79,126,247,0.25)',
+              color: '#4f7ef7', padding: '4px 10px', borderRadius: 5,
+              fontSize: '0.75rem', fontWeight: 600, textDecoration: 'none',
+              transition: 'background 0.2s',
+            }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(79,126,247,0.18)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(79,126,247,0.1)'}
+            ><i className="fas fa-arrow-up-right-from-square" style={{ fontSize: '0.65rem' }} /> Live</a>
           )}
           {p.github && (
-            <a
-              href={p.github}
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                display: 'flex', alignItems: 'center', gap: 5,
-                color: '#475569', fontSize: '0.82rem', textDecoration: 'none',
-                transition: 'color 0.2s', fontWeight: 600,
-              }}
-              onMouseEnter={e => e.currentTarget.style.color = '#e2e8f0'}
-              onMouseLeave={e => e.currentTarget.style.color = '#475569'}
-            >
-              <i className="fab fa-github" style={{ fontSize: '1.05rem' }} />
-              GitHub
-              <i className="fas fa-arrow-up-right-from-square" style={{ fontSize: '0.65rem' }} />
-            </a>
+            <a href={p.github} target="_blank" rel="noreferrer" style={{
+              display: 'flex', alignItems: 'center', gap: 5,
+              color: '#555', fontSize: '0.75rem', fontWeight: 600, textDecoration: 'none',
+              transition: 'color 0.2s',
+            }}
+              onMouseEnter={e => e.currentTarget.style.color = '#e8e8e8'}
+              onMouseLeave={e => e.currentTarget.style.color = '#555'}
+            ><i className="fab fa-github" style={{ fontSize: '0.95rem' }} /> Code</a>
           )}
         </div>
       </div>
 
-      <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#e2e8f0', marginBottom: 10 }}>{p.name}</h3>
-      <p style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: 1.8, marginBottom: 18 }}>{p.desc}</p>
+      <p style={{ color: '#666', fontSize: '0.845rem', lineHeight: 1.75, marginBottom: 16 }}>{p.desc}</p>
 
-      <ul style={{ listStyle: 'none', marginBottom: 24, flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <ul style={{ listStyle: 'none', flex: 1, display: 'flex', flexDirection: 'column', gap: 7, marginBottom: 20 }}>
         {p.bullets.map((b, j) => (
           <li key={j} style={{
-            color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.7,
-            paddingLeft: 16, position: 'relative',
+            color: '#666', fontSize: '0.8rem', lineHeight: 1.7,
+            paddingLeft: 14, position: 'relative',
           }}>
-            <span style={{ position: 'absolute', left: 0, color: '#06b6d4' }}>→</span>
+            <span style={{ position: 'absolute', left: 0, color: '#4f7ef7' }}>›</span>
             {b}
           </li>
         ))}
       </ul>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         {p.tech.map(t => (
           <span key={t} style={{
             fontFamily: "'JetBrains Mono',monospace",
-            fontSize: '0.7rem', color: '#06b6d4',
-            background: 'rgba(6,182,212,0.08)',
-            border: '1px solid rgba(6,182,212,0.2)',
-            padding: '3px 8px', borderRadius: 5,
+            fontSize: '0.7rem', color: '#555',
+            background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.07)',
+            padding: '2px 8px', borderRadius: 4,
           }}>{t}</span>
         ))}
       </div>
@@ -173,43 +124,29 @@ function ProjectCard({ p, i, inView }) {
 }
 
 export default function Projects() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
 
   return (
-    <section id="projects" style={{ padding: '100px 0', position: 'relative', zIndex: 1 }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 40px' }}>
-        <SectionHeader label="// projects" title="Things I've Built" sub="Real-world projects showcasing system design, backend engineering, and full-stack development." />
+    <section id="projects" style={{ padding: '96px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 48px' }}>
+        <SectionHeader label="// projects" title="Projects" sub="Selected work — shipped and in production." />
 
-        <div ref={ref} style={{
-          display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: 24,
-        }}>
-          {projects.map((p, i) => <ProjectCard key={p.name} p={p} i={i} inView={inView} />)}
+        <div ref={ref} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 16 }}>
+          {projects.map((p, i) => <Card key={p.name} p={p} i={i} inView={inView} />)}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          style={{ textAlign: 'center', marginTop: 40 }}
-        >
-          <a
-            href="https://github.com/deekshithreddy34"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              color: '#94a3b8', padding: '12px 28px', borderRadius: 10,
-              fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = '#6366f1'; e.currentTarget.style.color = '#e2e8f0'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = '#94a3b8'; e.currentTarget.style.transform = '' }}
-          >
-            <i className="fab fa-github" /> View All on GitHub
-          </a>
-        </motion.div>
+        <div style={{ marginTop: 28 }}>
+          <a href="https://github.com/deekshithreddy34" target="_blank" rel="noreferrer" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 7,
+            border: '1px solid rgba(255,255,255,0.09)', color: '#666',
+            padding: '9px 20px', borderRadius: 7,
+            fontSize: '0.82rem', fontWeight: 500, textDecoration: 'none',
+            transition: 'border-color 0.2s, color 0.2s',
+          }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#e8e8e8'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)' }}
+            onMouseLeave={e => { e.currentTarget.style.color = '#666'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)' }}
+          ><i className="fab fa-github" /> View all repositories on GitHub</a>
+        </div>
       </div>
     </section>
   )

@@ -9,17 +9,13 @@ import Education from './components/Education'
 import Achievements from './components/Achievements'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import ParticlesBg from './components/ParticlesBg'
 
 export default function App() {
   const [scrollPct, setScrollPct] = useState(0)
 
   useEffect(() => {
-    const onScroll = () => {
-      const el = document.documentElement
-      const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100
-      setScrollPct(pct)
-    }
+    const el = document.documentElement
+    const onScroll = () => setScrollPct((el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -27,7 +23,6 @@ export default function App() {
   return (
     <>
       <div className="scroll-progress" style={{ width: `${scrollPct}%` }} />
-      <ParticlesBg />
       <Navbar />
       <Hero />
       <About />

@@ -4,128 +4,139 @@ import { useInView } from 'react-intersection-observer'
 import SectionHeader from './SectionHeader'
 
 const links = [
-  { icon: 'fas fa-envelope', label: 'sripatideekshtih@gmail.com', href: 'mailto:sripatideekshtih@gmail.com', color: '#6366f1' },
-  { icon: 'fab fa-linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/deekshith-reddy-b301551a4', color: '#0a66c2' },
-  { icon: 'fab fa-github', label: 'GitHub', href: 'https://github.com/deekshithreddy34', color: '#e2e8f0' },
-  { icon: 'fas fa-code', label: 'LeetCode', href: 'https://leetcode.com/u/deekshithsripati', color: '#f59e0b' },
-  { icon: 'fas fa-phone', label: '+91-9573031796', href: 'tel:+919573031796', color: '#10b981' },
+  { icon: 'fab fa-linkedin', label: 'LinkedIn', sub: 'deekshith-reddy-b301551a4', href: 'https://linkedin.com/in/deekshith-reddy-b301551a4' },
+  { icon: 'fab fa-github', label: 'GitHub', sub: 'deekshithreddy34', href: 'https://github.com/deekshithreddy34' },
+  { icon: 'fas fa-code', label: 'LeetCode', sub: 'deekshithsripati', href: 'https://leetcode.com/u/deekshithsripati' },
 ]
 
 export default function Contact() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [copied, setCopied] = useState(false)
 
-  const copyEmail = () => {
+  const copy = () => {
     navigator.clipboard.writeText('sripatideekshtih@gmail.com')
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
 
   return (
-    <section id="contact" style={{ padding: '100px 0', position: 'relative', zIndex: 1 }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 40px' }}>
-        <SectionHeader label="// contact" title="Let's Connect" />
+    <section id="contact" style={{ padding: '96px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 48px' }}>
+        <SectionHeader label="// contact" title="Get in Touch" />
 
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          style={{
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(255,255,255,0.08)',
-            borderRadius: 24, padding: '64px 40px',
-            backdropFilter: 'blur(20px)',
-            textAlign: 'center',
-            position: 'relative', overflow: 'hidden',
-          }}
+          transition={{ duration: 0.5 }}
+          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}
+          className="contact-grid"
         >
-          {/* bg glow */}
-          <div style={{
-            position: 'absolute', top: -80, left: '50%', transform: 'translateX(-50%)',
-            width: 500, height: 300,
-            background: 'radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }} />
+          {/* left */}
+          <div>
+            <p style={{ color: '#666', fontSize: '0.925rem', lineHeight: 1.9, marginBottom: 28 }}>
+              I'm actively looking for full-time software engineering roles. If you have an opportunity,
+              a project to discuss, or just want to connect — I'd love to hear from you.
+            </p>
 
-          <motion.div
-            animate={{ rotate: [0, 5, -5, 0] }}
-            transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
-            style={{ fontSize: '3rem', marginBottom: 20 }}
-          >👋</motion.div>
-
-          <h2 style={{ fontSize: '2rem', fontWeight: 800, color: '#e2e8f0', marginBottom: 16, letterSpacing: '-0.02em' }}>
-            Open to Opportunities
-          </h2>
-          <p style={{ color: '#94a3b8', fontSize: '0.975rem', maxWidth: 500, margin: '0 auto 40px', lineHeight: 1.9 }}>
-            I'm actively looking for full-time software engineering roles. Whether you have a project, an opportunity,
-            or just want to talk tech — I'd love to hear from you.
-          </p>
-
-          {/* email copy */}
-          <div style={{ marginBottom: 36, display: 'flex', justifyContent: 'center' }}>
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: 0,
-              background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: 12, overflow: 'hidden',
-            }}>
-              <span style={{
-                padding: '12px 20px', fontFamily: "'JetBrains Mono',monospace",
-                fontSize: '0.88rem', color: '#94a3b8',
-              }}>sripatideekshtih@gmail.com</span>
-              <button
-                onClick={copyEmail}
-                style={{
-                  background: 'rgba(99,102,241,0.2)', border: 'none', borderLeft: '1px solid rgba(255,255,255,0.1)',
-                  color: copied ? '#10b981' : '#6366f1', padding: '12px 18px',
-                  cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600,
-                  display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s',
-                  fontFamily: 'inherit',
+            <div style={{ marginBottom: 24 }}>
+              <div style={{ fontSize: '0.75rem', color: '#555', fontFamily: "'JetBrains Mono',monospace", marginBottom: 8 }}>EMAIL</div>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 0,
+                background: '#111', border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: 8, overflow: 'hidden', width: 'fit-content',
+              }}>
+                <span style={{ padding: '10px 16px', fontSize: '0.875rem', color: '#ccc', fontFamily: "'JetBrains Mono',monospace" }}>
+                  sripatideekshtih@gmail.com
+                </span>
+                <button onClick={copy} style={{
+                  background: '#1a1a1a', border: 'none', borderLeft: '1px solid rgba(255,255,255,0.08)',
+                  color: copied ? '#22c55e' : '#555', padding: '10px 14px',
+                  cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600,
+                  display: 'flex', alignItems: 'center', gap: 5,
+                  transition: 'color 0.2s', fontFamily: 'inherit',
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(99,102,241,0.35)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'rgba(99,102,241,0.2)'}
-              >
-                <i className={`fas fa-${copied ? 'check' : 'copy'}`} />
-                {copied ? 'Copied!' : 'Copy'}
-              </button>
+                  onMouseEnter={e => !copied && (e.currentTarget.style.color = '#e8e8e8')}
+                  onMouseLeave={e => !copied && (e.currentTarget.style.color = '#555')}
+                >
+                  <i className={`fas fa-${copied ? 'check' : 'copy'}`} />
+                  {copied ? 'Copied' : 'Copy'}
+                </button>
+              </div>
             </div>
+
+            <a href="mailto:sripatideekshtih@gmail.com" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              background: '#4f7ef7', color: '#fff',
+              padding: '11px 24px', borderRadius: 8,
+              fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none',
+              transition: 'background 0.2s',
+            }}
+              onMouseEnter={e => e.currentTarget.style.background = '#3a6ae4'}
+              onMouseLeave={e => e.currentTarget.style.background = '#4f7ef7'}
+            >
+              <i className="fas fa-paper-plane" style={{ fontSize: '0.8rem' }} /> Send Email
+            </a>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
+          {/* right — social links */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {links.map(l => (
               <a
                 key={l.label}
                 href={l.href}
-                target={l.href.startsWith('mailto') || l.href.startsWith('tel') ? '_self' : '_blank'}
+                target="_blank"
                 rel="noreferrer"
                 style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 10,
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  color: '#94a3b8', padding: '13px 22px', borderRadius: 12,
-                  fontSize: '0.875rem', fontWeight: 600, textDecoration: 'none',
-                  transition: 'all 0.2s',
+                  display: 'flex', alignItems: 'center', gap: 16,
+                  background: '#111', border: '1px solid rgba(255,255,255,0.07)',
+                  borderRadius: 10, padding: '18px 22px', textDecoration: 'none',
+                  transition: 'border-color 0.2s, background 0.2s',
                 }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = l.color
-                  e.currentTarget.style.color = l.color
-                  e.currentTarget.style.transform = 'translateY(-3px)'
-                  e.currentTarget.style.background = `${l.color}10`
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'
-                  e.currentTarget.style.color = '#94a3b8'
-                  e.currentTarget.style.transform = ''
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)'; e.currentTarget.style.background = '#131313' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.background = '#111' }}
               >
-                <i className={l.icon} style={{ fontSize: '1rem' }} />
-                {l.label}
+                <div style={{
+                  width: 38, height: 38, borderRadius: 8,
+                  background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.08)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: '#555', fontSize: '1rem', flexShrink: 0,
+                }}>
+                  <i className={l.icon} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#e8e8e8', marginBottom: 2 }}>{l.label}</div>
+                  <div style={{ fontSize: '0.75rem', color: '#555' }}>{l.sub}</div>
+                </div>
+                <i className="fas fa-arrow-up-right-from-square" style={{ marginLeft: 'auto', color: '#333', fontSize: '0.7rem' }} />
               </a>
             ))}
+            <a href="tel:+919573031796" style={{
+              display: 'flex', alignItems: 'center', gap: 16,
+              background: '#111', border: '1px solid rgba(255,255,255,0.07)',
+              borderRadius: 10, padding: '18px 22px', textDecoration: 'none',
+              transition: 'border-color 0.2s, background 0.2s',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)'; e.currentTarget.style.background = '#131313' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.background = '#111' }}
+            >
+              <div style={{
+                width: 38, height: 38, borderRadius: 8,
+                background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.08)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: '#555', fontSize: '1rem', flexShrink: 0,
+              }}>
+                <i className="fas fa-phone" />
+              </div>
+              <div>
+                <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#e8e8e8', marginBottom: 2 }}>Phone</div>
+                <div style={{ fontSize: '0.75rem', color: '#555' }}>+91-9573031796</div>
+              </div>
+            </a>
           </div>
         </motion.div>
       </div>
+      <style>{`@media(max-width:768px){.contact-grid{grid-template-columns:1fr!important;}}`}</style>
     </section>
   )
 }

@@ -3,71 +3,63 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const links = ['About', 'Skills', 'Experience', 'Projects', 'Education', 'Contact']
 
+const s = {
+  nav: (scrolled) => ({
+    position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+    padding: scrolled ? '14px 64px' : '22px 64px',
+    backdropFilter: 'blur(12px)',
+    WebkitBackdropFilter: 'blur(12px)',
+    background: scrolled ? 'rgba(12,12,12,0.92)' : 'transparent',
+    borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+    transition: 'padding 0.3s, background 0.3s, border-color 0.3s',
+  }),
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const [active, setActive] = useState('')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    const fn = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', fn)
+    return () => window.removeEventListener('scroll', fn)
   }, [])
 
-  const scrollTo = (id) => {
+  const go = (id) => {
     document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })
     setOpen(false)
-    setActive(id)
   }
 
   return (
     <motion.nav
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        padding: scrolled ? '12px 60px' : '20px 60px',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        background: scrolled ? 'rgba(5,8,16,0.85)' : 'transparent',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
-        transition: 'all 0.3s ease',
-      }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      style={s.nav(scrolled)}
     >
-      <a
-        href="#"
-        style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: '1.1rem', fontWeight: 600,
-          color: '#6366f1', textDecoration: 'none',
-        }}
-        onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
       >
-        &lt;<span style={{ color: '#e2e8f0' }}>DR</span>/&gt;
-      </a>
+        <span style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: '0.95rem', fontWeight: 600, color: '#e8e8e8', letterSpacing: '0.02em',
+        }}>deekshith<span style={{ color: '#4f7ef7' }}>.dev</span></span>
+      </button>
 
-      {/* Desktop */}
-      <ul style={{ display: 'flex', gap: 32, listStyle: 'none', margin: 0, padding: 0 }}
-        className="nav-desktop">
+      {/* Desktop links */}
+      <ul style={{ display: 'flex', gap: 36, listStyle: 'none' }} className="nav-links">
         {links.map(l => (
           <li key={l}>
-            <button
-              onClick={() => scrollTo(l)}
-              style={{
-                background: 'none', border: 'none', cursor: 'pointer',
-                color: active === l ? '#e2e8f0' : '#94a3b8',
-                fontSize: '0.875rem', fontWeight: 500,
-                fontFamily: 'inherit', letterSpacing: '0.02em',
-                transition: 'color 0.2s', padding: '4px 0',
-                borderBottom: active === l ? '1px solid #6366f1' : '1px solid transparent',
-              }}
-              onMouseEnter={e => e.target.style.color = '#e2e8f0'}
-              onMouseLeave={e => e.target.style.color = active === l ? '#e2e8f0' : '#94a3b8'}
-            >
-              {l}
-            </button>
+            <button onClick={() => go(l)} style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: '#888', fontSize: '0.85rem', fontWeight: 500,
+              fontFamily: 'inherit', transition: 'color 0.2s',
+            }}
+              onMouseEnter={e => e.target.style.color = '#e8e8e8'}
+              onMouseLeave={e => e.target.style.color = '#888'}
+            >{l}</button>
           </li>
         ))}
       </ul>
@@ -75,51 +67,46 @@ export default function Navbar() {
       <a
         href="mailto:sripatideekshtih@gmail.com"
         style={{
-          background: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
-          color: '#fff', padding: '8px 20px', borderRadius: 8,
-          fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none',
-          boxShadow: '0 4px 15px rgba(99,102,241,0.3)',
-          transition: 'transform 0.2s, box-shadow 0.2s',
+          background: '#4f7ef7', color: '#fff',
+          padding: '8px 18px', borderRadius: 7,
+          fontSize: '0.82rem', fontWeight: 600,
+          textDecoration: 'none', transition: 'background 0.2s',
         }}
-        onMouseEnter={e => { e.target.style.transform = 'translateY(-2px)'; e.target.style.boxShadow = '0 8px 25px rgba(99,102,241,0.5)' }}
-        onMouseLeave={e => { e.target.style.transform = ''; e.target.style.boxShadow = '0 4px 15px rgba(99,102,241,0.3)' }}
-      >
-        Hire Me
-      </a>
+        onMouseEnter={e => e.currentTarget.style.background = '#3a6ae4'}
+        onMouseLeave={e => e.currentTarget.style.background = '#4f7ef7'}
+        className="nav-cta"
+      >Hire Me</a>
 
-      {/* Mobile hamburger */}
-      <button
-        className="nav-burger"
-        onClick={() => setOpen(o => !o)}
-        style={{
-          display: 'none', background: 'none', border: 'none',
-          color: '#e2e8f0', fontSize: '1.4rem', cursor: 'pointer',
-        }}
-      >
+      {/* Mobile burger */}
+      <button onClick={() => setOpen(o => !o)} className="nav-burger" style={{
+        display: 'none', background: 'none', border: 'none',
+        color: '#e8e8e8', fontSize: '1.2rem', cursor: 'pointer',
+      }}>
         <i className={`fas fa-${open ? 'times' : 'bars'}`} />
       </button>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -10 }}
             style={{
               position: 'absolute', top: '100%', left: 0, right: 0,
-              background: 'rgba(5,8,16,0.97)', backdropFilter: 'blur(20px)',
-              padding: '24px 40px', display: 'flex', flexDirection: 'column', gap: 16,
-              borderBottom: '1px solid rgba(255,255,255,0.08)',
+              background: '#111', borderBottom: '1px solid rgba(255,255,255,0.07)',
+              padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 4,
             }}
           >
             {links.map(l => (
-              <button key={l} onClick={() => scrollTo(l)}
-                style={{
-                  background: 'none', border: 'none', color: '#94a3b8',
-                  fontSize: '1rem', fontWeight: 500, cursor: 'pointer',
-                  textAlign: 'left', fontFamily: 'inherit', padding: '8px 0',
-                  borderBottom: '1px solid rgba(255,255,255,0.06)',
-                }}
+              <button key={l} onClick={() => go(l)} style={{
+                background: 'none', border: 'none', color: '#888',
+                fontSize: '0.95rem', fontWeight: 500, cursor: 'pointer',
+                textAlign: 'left', fontFamily: 'inherit', padding: '10px 0',
+                borderBottom: '1px solid rgba(255,255,255,0.05)',
+                transition: 'color 0.2s',
+              }}
+                onMouseEnter={e => e.target.style.color = '#e8e8e8'}
+                onMouseLeave={e => e.target.style.color = '#888'}
               >{l}</button>
             ))}
           </motion.div>
@@ -127,10 +114,10 @@ export default function Navbar() {
       </AnimatePresence>
 
       <style>{`
-        @media (max-width: 768px) {
-          .nav-desktop { display: none !important; }
-          .nav-burger { display: block !important; }
-          nav { padding: 16px 24px !important; }
+        @media(max-width:768px){
+          .nav-links,.nav-cta{display:none!important;}
+          .nav-burger{display:block!important;}
+          nav{padding:16px 24px!important;}
         }
       `}</style>
     </motion.nav>

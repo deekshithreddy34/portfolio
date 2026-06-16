@@ -2,15 +2,16 @@ export default function Footer() {
   return (
     <footer style={{
       borderTop: '1px solid rgba(255,255,255,0.06)',
-      padding: '28px 40px',
-      textAlign: 'center',
-      color: '#475569',
-      fontSize: '0.8rem',
+      padding: '24px 48px',
       position: 'relative', zIndex: 1,
-      fontFamily: "'JetBrains Mono',monospace",
     }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-        <span>Built by <span style={{ color: '#6366f1' }}>S. Deekshith Reddy</span> · 2025</span>
+      <div style={{
+        maxWidth: 1080, margin: '0 auto',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12,
+      }}>
+        <span style={{ color: '#333', fontSize: '0.78rem', fontFamily: "'JetBrains Mono',monospace" }}>
+          © 2025 S. Deekshith Reddy
+        </span>
         <div style={{ display: 'flex', gap: 20 }}>
           {[
             { icon: 'fab fa-github', href: 'https://github.com/deekshithreddy34' },
@@ -19,15 +20,14 @@ export default function Footer() {
             { icon: 'fas fa-envelope', href: 'mailto:sripatideekshtih@gmail.com' },
           ].map(l => (
             <a key={l.href} href={l.href} target="_blank" rel="noreferrer"
-              style={{ color: '#475569', fontSize: '1rem', transition: 'color 0.2s' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#6366f1'}
-              onMouseLeave={e => e.currentTarget.style.color = '#475569'}
+              style={{ color: '#333', fontSize: '0.95rem', transition: 'color 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#888'}
+              onMouseLeave={e => e.currentTarget.style.color = '#333'}
             >
               <i className={l.icon} />
             </a>
           ))}
         </div>
-        <span>React · Framer Motion · Vite</span>
       </div>
     </footer>
   )
