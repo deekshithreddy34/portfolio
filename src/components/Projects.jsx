@@ -12,7 +12,7 @@ const projects = [
       'Deployed on GCP with a public production environment.',
     ],
     tech: ['React', 'Node.js', 'WebSockets', 'GCP'],
-    github: null,
+    github: 'https://github.com/deekshithreddy34/exchange',
     live: 'http://34.51.42.190/markets',
   },
   {
@@ -37,7 +37,7 @@ const projects = [
     ],
     tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Docker', 'Turborepo'],
     github: 'https://github.com/deekshithreddy34/payments-gateway',
-    live: null,
+    live: 'https://payments-gateway-7y5x.onrender.com',
   },
   {
     name: 'Zapier-Style Workflow Engine',
