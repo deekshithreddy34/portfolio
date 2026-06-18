@@ -17,13 +17,13 @@ const projects = [
   },
   {
     name: 'Real-Time Chess App',
-    desc: 'Multiplayer chess with real-time game sync, Google OAuth login, and draw/resign controls.',
+    desc: 'Multiplayer chess with real-time game sync, email/password authentication, and draw/resign controls.',
     bullets: [
       'WebSocket-based real-time move synchronisation between players.',
-      'Google OAuth authentication for secure, seamless sign-in.',
+      'Email and password authentication with JWT-based sessions.',
       'Draw and resign controls with server-side game state management.',
     ],
-    tech: ['React', 'Node.js', 'WebSockets', 'Google OAuth'],
+    tech: ['React', 'Node.js', 'WebSockets', 'JWT'],
     github: 'https://github.com/deekshithreddy34',
     live: 'https://chess-app-frontend-one.vercel.app/',
   },
