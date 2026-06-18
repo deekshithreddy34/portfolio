@@ -3,11 +3,11 @@ import { useInView } from 'react-intersection-observer'
 import SectionHeader from './SectionHeader'
 
 const bullets = [
-  <>Contributed to an <strong style={{ color: '#ccc', fontWeight: 600 }}>AI-powered database interaction platform</strong> enabling natural language querying — reducing manual SQL effort by ~60% for common data access tasks.</>,
-  <>Built responsive frontend interfaces with <strong style={{ color: '#ccc', fontWeight: 600 }}>React and Next.js</strong> for prompt submission and structured query visualisation.</>,
-  <>Integrated <strong style={{ color: '#ccc', fontWeight: 600 }}>4+ relational database systems</strong> into a unified query layer enabling dynamic cross-dataset data retrieval.</>,
-  <>Optimised <strong style={{ color: '#ccc', fontWeight: 600 }}>REST API interactions</strong> in collaboration with backend engineers, reducing average API latency by ~25%.</>,
-  <>Containerized application services using <strong style={{ color: '#ccc', fontWeight: 600 }}>Docker</strong>, enabling consistent development and deployment environments.</>,
+  <>Worked on the frontend of an <strong style={{ color: '#ccc', fontWeight: 600 }}>AI-powered database platform</strong> that allowed non-technical users to interact with complex data through a conversational interface.</>,
+  <>Built and refined <strong style={{ color: '#ccc', fontWeight: 600 }}>React UI components</strong> for the query interface — focused on usability, responsiveness, and visual consistency across the product.</>,
+  <>Resolved frontend bugs and interface issues, contributing to a more polished experience for end users and reducing friction in the core user flow.</>,
+  <>Collaborated closely with the product team in a fast-moving startup environment, translating requirements into clean, maintainable <strong style={{ color: '#ccc', fontWeight: 600 }}>React</strong> code.</>,
+  <>Gained practical exposure to how frontend decisions impact real users — shipping iteratively and taking feedback directly from the team.</>,
 ]
 
 export default function Experience() {

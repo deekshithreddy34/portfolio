@@ -18,8 +18,8 @@ export default function About() {
           >
             {[
               <>I'm a <strong style={{ color: '#e8e8e8', fontWeight: 600 }}>full-stack developer</strong> with an M.Sc in Data Science from Loyola Academy, Hyderabad (CGPA 8.03). I combine engineering rigour with product thinking to build reliable, scalable software.</>,
-              <>At <strong style={{ color: '#e8e8e8', fontWeight: 600 }}>DX Engineers</strong>, I contributed to an AI-powered database platform that let non-technical users query complex databases using plain English — reducing manual SQL effort by 60% and improving API latency by 25%.</>,
-              <>I enjoy working across the full stack: designing REST APIs, building event-driven pipelines with <strong style={{ color: '#e8e8e8', fontWeight: 600 }}>Apache Kafka</strong>, writing ACID-compliant <strong style={{ color: '#e8e8e8', fontWeight: 600 }}>PostgreSQL</strong> transactions, and shipping clean React UIs.</>,
+              <>At <strong style={{ color: '#e8e8e8', fontWeight: 600 }}>DX Engineers</strong>, I worked on the frontend of an AI-powered database platform — building React UI components and resolving interface issues to make a complex product feel simple for non-technical users.</>,
+              <>I enjoy turning designs into clean, responsive UIs and have been steadily expanding into backend and systems work — building personal projects with <strong style={{ color: '#e8e8e8', fontWeight: 600 }}>Node.js</strong>, <strong style={{ color: '#e8e8e8', fontWeight: 600 }}>PostgreSQL</strong>, and event-driven architectures to sharpen my full-stack thinking.</>,
             ].map((t, i) => (
               <p key={i} style={{ color: '#777', lineHeight: 1.9, marginBottom: 18, fontSize: '0.925rem' }}>{t}</p>
             ))}
