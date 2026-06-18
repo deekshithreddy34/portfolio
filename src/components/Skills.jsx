@@ -5,7 +5,7 @@ import SectionHeader from './SectionHeader'
 const groups = [
   { title: 'Languages', tags: ['JavaScript', 'TypeScript', 'Java', 'SQL', 'HTML', 'CSS'] },
   { title: 'Frameworks & Libraries', tags: ['React.js', 'Next.js', 'Node.js', 'Express.js', 'Recoil', 'Prisma ORM'] },
-  { title: 'Cloud & DevOps', tags: ['AWS', 'GCP', 'Docker', 'Kubernetes', 'CI/CD', 'GitHub Actions'] },
+  { title: 'Cloud & DevOps', tags: ['Docker', 'Kubernetes'] },
   { title: 'Databases & Messaging', tags: ['PostgreSQL', 'MySQL', 'Redis', 'Apache Kafka', 'REST APIs'] },
 ]
 
