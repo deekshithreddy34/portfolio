@@ -13,7 +13,7 @@ const projects = [
     ],
     tech: ['React', 'Node.js', 'WebSockets', 'GCP'],
     github: 'https://github.com/deekshithreddy34/exchange',
-    live: 'http://34.51.91.23/markets',
+    // live: 'http://34.51.91.23/markets',
   },
   {
     name: 'Real-Time Chess App',
