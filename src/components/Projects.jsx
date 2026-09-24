@@ -37,20 +37,20 @@ const projects = [
     ],
     tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Docker', 'Turborepo'],
     github: 'https://github.com/deekshithreddy34/payments-gateway',
-    live: 'https://payments-gateway-7y5x.onrender.com',
-  },
-  {
-    name: 'Zapier-Style Workflow Engine',
-    desc: 'Event-driven workflow automation where external services trigger actions via webhooks.',
-    bullets: [
-      'Apache Kafka event-driven architecture with async worker-based execution pipeline.',
-      'Transactional Outbox Pattern for atomic DB + Kafka consistency, preventing data loss.',
-      'Webhook ingestion with persisted ZapRun records for reliable workflow tracking.',
-    ],
-    tech: ['Node.js', 'Express', 'Apache Kafka', 'PostgreSQL', 'Prisma ORM'],
-    github: 'https://github.com/deekshithreddy34/Zapier',
     live: null,
   },
+  // {
+  //   name: 'Zapier-Style Workflow Engine',
+  //   desc: 'Event-driven workflow automation where external services trigger actions via webhooks.',
+  //   bullets: [
+  //     'Apache Kafka event-driven architecture with async worker-based execution pipeline.',
+  //     'Transactional Outbox Pattern for atomic DB + Kafka consistency, preventing data loss.',
+  //     'Webhook ingestion with persisted ZapRun records for reliable workflow tracking.',
+  //   ],
+  //   tech: ['Node.js', 'Express', 'Apache Kafka', 'PostgreSQL', 'Prisma ORM'],
+  //   github: 'https://github.com/deekshithreddy34/Zapier',
+  //   live: null,
+  // },
 ]
 
 function Card({ p, i, inView }) {
