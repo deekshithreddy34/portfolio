@@ -4,7 +4,7 @@ export default function Resume() {
 
 
       <a
-        href="/resume.pdf"
+        href="/deekshith_sripati.pdf"
         download
         className="rounded-md bg-blue-500 px-6 py-3 font-medium text-white transition hover:bg-blue-600"
       >
