@@ -9,6 +9,7 @@ import Education from './components/Education'
 import Achievements from './components/Achievements'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Resume from './components/Resume'
 
 export default function App() {
   const [scrollPct, setScrollPct] = useState(0)
@@ -29,6 +30,7 @@ export default function App() {
       <Skills />
       <Experience />
       <Projects />
+      <Resume/>
       <Education />
       <Achievements />
       <Contact />

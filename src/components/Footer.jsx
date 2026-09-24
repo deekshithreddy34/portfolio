@@ -1,3 +1,4 @@
+import Resume from "./Resume"
 export default function Footer() {
   return (
     <footer style={{
@@ -12,6 +13,9 @@ export default function Footer() {
         <span style={{ color: '#333', fontSize: '0.78rem', fontFamily: "'JetBrains Mono',monospace" }}>
           © 2025 S. Deekshith Reddy
         </span>
+        <div>
+          <Resume></Resume>
+        </div>
         <div style={{ display: 'flex', gap: 20 }}>
           {[
             { icon: 'fab fa-github', href: 'https://github.com/deekshithreddy34' },
